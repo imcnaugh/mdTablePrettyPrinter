@@ -1,0 +1,14 @@
+{
+  "name": "md_table_prettyprint",
+  "version": "1.0.0",
+  "description": "A small utility to pretty print markdown tables",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "author": "Ian McNaughton <IanMcNaugh@gmail.com> (http://ianmcnaughton.net/)",
+  "license": "ISC",
+  "devDependencies": {
+    "jest": "^29.3.1"
+  }
+}
