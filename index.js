@@ -96,6 +96,6 @@ function prettyPrint (markDownTable, options) {
         }
         return line
     }
-};
+}
 
 module.exports = { prettyPrint, prettyPrintAsync }

@@ -8,7 +8,7 @@ test('with options', () => {
   expect(mdTablePrettyPrint.prettyPrint('some text', { padding: 2 })).toBe('|some text  |')
 })
 
-test('negetive options', () => {
+test('negative options', () => {
   expect(mdTablePrettyPrint.prettyPrint('some text', { })).toBe('|some text |')
 })
 
