@@ -46,7 +46,11 @@ const table = 'Col1 | Col2 | Col3\n' +
   '--- | --- | --- |\n' +
               '1 |2 | 3';
 
+const options = {
+    padding = 2
+}
+
 prettyPrintAsync(table).then(prettyTable => {
-    console.log(prettyTable);
+    console.log(prettyTable, options);
 });
 ```
