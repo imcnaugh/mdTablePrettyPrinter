@@ -22,7 +22,7 @@ test('more of a real test', () => {
 4|5
 7|8|9`
 
-    const expected = `|Column 1 |Column 2 |Column 3 |\n|---------|---------|---------|\n|1        |2        |3        |\n|4        |5        |         |\n|7        |8        |9        |`
+    const expected = `|Column 1 |Column 2 |Column 3 |\n| ------- | ------- | ------- |\n|1        |2        |3        |\n|4        |5        |         |\n|7        |8        |9        |`
 
     expect(prettyPrint(input)).toBe(expected)
 })
@@ -35,6 +35,15 @@ test('sanitizes input', () => {
 
 test('divider line is processed properly', () => {
     const input = `Column 1 | Column 2 | Column 3\n|:---:----|:--:|---::---:|\n1|2|3\n4|5\n7|8|9`
-    const expected = `|Column 1 |Column 2 |Column 3 |\n|:--------|:-------:|--------:|\n|1        |2        |3        |\n|4        |5        |         |\n|7        |8        |9        |`
+    const expected = `|Column 1 |Column 2 |Column 3 |\n|:------- |:-------:| -------:|\n|1        |2        |3        |\n|4        |5        |         |\n|7        |8        |9        |`
     expect(prettyPrint(input)).toBe(expected)
+})
+
+test('minimum column width is respected', () => {
+  expect(prettyPrint('a')).toBe('|a    |')
+})
+
+test('minimum column width options are respected', () => {
+  expect(prettyPrint('a', { minimumWidth: 10 })).toBe('|a         |')
+
 })

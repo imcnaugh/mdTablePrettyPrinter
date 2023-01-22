@@ -1,9 +1,11 @@
 const defaultOptions = {
-    padding: 1
+    padding: 1,
+    minimumColumnWidth: 5
 }
 
 module.exports = function (markDownTable, options) {
-    let padding = 1
+    let padding
+    let minimumColumnWidth
     const separatorLineRegex = /^[\- :]*$/;
 
     let originalText = markDownTable
@@ -28,6 +30,7 @@ module.exports = function (markDownTable, options) {
 
     function setOptions(options) {
         padding = options?.padding || defaultOptions.padding
+        minimumColumnWidth = options?.minimumWidth || defaultOptions.minimumColumnWidth
     }
 
     function setItemArray() {
@@ -52,7 +55,7 @@ module.exports = function (markDownTable, options) {
     function setColumnMaxLength(){
         itemArray.forEach(line => {
             line.forEach((item, i) => {
-                if(item.length > (columnMaxLength[i] ?? 0)){
+                if(item.length > (columnMaxLength[i] ?? 0)) {
                     columnMaxLength[i] = item.length;
                 }
             })
@@ -67,21 +70,22 @@ module.exports = function (markDownTable, options) {
         let formattedLine = "|"
         for (let i = 0; i < maxItemsInRow; i++) {
             const item = line[i] ?? "";
-            formattedLine += item.padEnd(columnMaxLength[i] + padding, " ") + "|";
+            const widthOfColumn = Math.max(columnMaxLength[i] + padding, minimumColumnWidth)
+            formattedLine += item.padEnd(widthOfColumn, " ") + "|";
         }
         return formattedLine
     }
 
     function generateSeparatorLine(){
+        let getPrefixPostfix = (char) => char === ':' ? ':' : ' '
+
         let line = "|"
         for (let i = 0; i < maxItemsInRow; i++) {
-            let formattedDivider = ""
-            let divider = dividerRow[i] ?? ""
-            if ((divider[0] ?? '') === ':') {
-                formattedDivider += ":"
-            }
-            formattedDivider = formattedDivider.padEnd(columnMaxLength[i], "-")
-            formattedDivider += (divider[divider.length - 1] ?? '') === ':' ? ":" : "-"
+            let divider = dividerRow[i] ?? ''
+            let formattedDivider = ''
+            formattedDivider += getPrefixPostfix(divider[0] ?? '')
+            formattedDivider = formattedDivider.padEnd(columnMaxLength[i], '-')
+            formattedDivider += getPrefixPostfix(divider[divider.length - 1] ?? '')
             line += formattedDivider + "|";
         }
         return line
