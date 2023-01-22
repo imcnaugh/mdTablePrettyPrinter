@@ -6,8 +6,17 @@
   "scripts": {
     "test": "jest"
   },
-  "author": "Ian McNaughton <IanMcNaugh@gmail.com> (http://ianmcnaughton.net/)",
-  "license": "ISC",
+  "author": {
+    "name": "Ian McNaughton",
+    "email": "IanMcNaugh@gmail.com",
+    "url": "https://IanMcNaughton.net"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/imcnaugh/mdTablePrettyPrinter"
+  },
+  "homepage": "https://github.com/imcnaugh/mdTablePrettyPrinter",
+  "license": "MIT",
   "devDependencies": {
     "jest": "^29.3.1"
   }
