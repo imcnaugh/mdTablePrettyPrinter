@@ -3,7 +3,13 @@ const defaultOptions = {
     minimumColumnWidth: 5
 }
 
-module.exports = function (markDownTable, options) {
+async function prettyPrintAsync(markDownTable, options) {
+    return new Promise((resolve) => {
+        resolve(prettyPrint(markDownTable, options))
+    })
+}
+
+function prettyPrint (markDownTable, options) {
     let padding
     let minimumColumnWidth
     const separatorLineRegex = /^[\- :]*$/;
@@ -91,3 +97,5 @@ module.exports = function (markDownTable, options) {
         return line
     }
 };
+
+module.exports = { prettyPrint, prettyPrintAsync }
