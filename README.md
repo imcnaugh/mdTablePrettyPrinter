@@ -51,6 +51,6 @@ const options = {
 }
 
 prettyPrintAsync(table).then(prettyTable => {
-    console.log(prettyTable, options);
+    console.log(prettyTable);
 });
 ```
