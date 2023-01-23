@@ -50,7 +50,7 @@ const options = {
     padding = 2
 }
 
-prettyPrintAsync(table).then(prettyTable => {
+prettyPrintAsync(table, options).then(prettyTable => {
     console.log(prettyTable);
 });
 ```
