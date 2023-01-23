@@ -43,7 +43,7 @@ console.log(prettyTable);
 ```javascript
 const { prettyPrintAsync } = require('markdown-table-pretty-printer');
 const table = 'Col1 | Col2 | Col3\n' +
-  '--- | --- | --- |\n' +
+              '--- | --- | --- |\n' +
               '1 |2 | 3';
 
 const options = {
