@@ -8,6 +8,12 @@ test('with options', () => {
   expect(prettyPrint('some text', { padding: 2 })).toBe('|some text  |')
 })
 
+test('with options and a divider row', () => {
+    let input = 'some Text\nvalues'
+    let expected = '|some Text  |\n| --------- |\n|values     |'
+    expect(prettyPrint(input, { padding: 2 })).toBe(expected)
+})
+
 test('negative options', () => {
   expect(prettyPrint('some text', { })).toBe('|some text |')
 })

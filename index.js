@@ -90,7 +90,8 @@ function prettyPrint (markDownTable, options) {
             let divider = dividerRow[i] ?? ''
             let formattedDivider = ''
             formattedDivider += getPrefixPostfix(divider[0] ?? '')
-            formattedDivider = formattedDivider.padEnd(columnMaxLength[i], '-')
+            let widthOfColumn = Math.max(columnMaxLength[i] + padding, minimumColumnWidth) -1
+            formattedDivider = formattedDivider.padEnd(widthOfColumn, '-')
             formattedDivider += getPrefixPostfix(divider[divider.length - 1] ?? '')
             line += formattedDivider + "|";
         }
