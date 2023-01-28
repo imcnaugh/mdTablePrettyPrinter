@@ -21,7 +21,7 @@ Oh my goodness, a million times better.
 
 ## Usage
 
-Bwo methods are available, `prettyPrint` and `prettyPrintAsync` they do the same thing but the response is a promise in the async version.
+Two methods are available, `prettyPrint` and `prettyPrintAsync` they do the same thing but the response is a promise in the async version.
 
 The methods take 2 arguments, the first is the Markdown table as a string, the second is an options object that is optional.
 
